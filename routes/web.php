@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/homekader', function () {
+    return "ini halaman home kader";
+});
+
+Route::get('/home', function () {
+    return view('client.profile.index');
+});
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', [LoginController::class,'login'])->name('login');
+Route::post('/postlogin', [LoginController::class,'postlogin'])->name('postlogin');
