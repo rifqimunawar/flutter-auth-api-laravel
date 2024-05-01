@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile_uts/screens/list_product.dart';
 
-class AddProduct extends StatelessWidget {
+class EditProduct extends StatelessWidget {
+  final Map product;
+
+  EditProduct({required this.product});
+
   final _formKey = GlobalKey<FormState>();
   final _nameController =
       TextEditingController(); // tambahkan ini juga jika belum
@@ -13,13 +17,15 @@ class AddProduct extends StatelessWidget {
   final _imgController =
       TextEditingController(); // tambahkan ini juga jika belum
 
-  Future saveProduct() async {
-    final response =
-        await http.post(Uri.parse('http://10.0.2.2:8000/api/products'), body: {
-      'name': _nameController.text,
-      'price': _priceController.text,
-      'img': _imgController.text,
-    });
+  Future updateProduct() async {
+    final response = await http.put(
+        Uri.parse(
+            'http://10.0.2.2:8000/api/product/' + product['id'].toString()),
+        body: {
+          'name': _nameController.text,
+          'price': _priceController.text,
+          'img': _imgController.text,
+        });
     return (response.body);
   }
 
@@ -27,7 +33,7 @@ class AddProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Add Product'),
+          title: Text('Edit Product'),
         ),
         body: Form(
             key: _formKey,
@@ -36,7 +42,7 @@ class AddProduct extends StatelessWidget {
               child: Column(
                 children: [
                   TextFormField(
-                    controller: _nameController,
+                    controller: _nameController..text = product['name'],
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Nama tidak boleh kosong!!";
@@ -46,7 +52,7 @@ class AddProduct extends StatelessWidget {
                     decoration: InputDecoration(labelText: "Nama Product"),
                   ),
                   TextFormField(
-                    controller: _priceController,
+                    controller: _priceController..text = product['price'],
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Harga tidak boleh kosong!!";
@@ -56,7 +62,7 @@ class AddProduct extends StatelessWidget {
                     decoration: InputDecoration(labelText: "Harga Product"),
                   ),
                   TextFormField(
-                    controller: _imgController,
+                    controller: _imgController..text = product['img'],
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Gambar tidak boleh kosong!!";
@@ -73,23 +79,22 @@ class AddProduct extends StatelessWidget {
                       if (_formKey.currentState!.validate()) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text("Menambah Produk..."),
+                            content: Text("Memperbarui produk..."),
                             duration:
                                 Duration(seconds: 1), // Atur durasi snackbar
                           ),
                         );
-                        saveProduct().then((value) {
-                          // response dari saveProduct
+                        updateProduct().then((response) {
+                          print("Berhasil memperbarui produk");
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => ListProduct()),
                           );
-                          print("berhasil"); // output respons ke konsol
                         });
                       }
                     },
-                    child: Text("Simpan"),
+                    child: Text("Update"),
                   )
                 ],
               ),

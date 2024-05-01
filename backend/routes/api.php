@@ -27,8 +27,9 @@ Route::post('logout', [UserAuthController::class, 'logout'])->middleware('auth:s
 
 Route::get('products', [ProductController::class, 'index']);
 Route::post('products', [ProductController::class, 'store']);
+Route::put('product/{id}', [ProductController::class, 'update']);
+Route::delete('product/{id}', [ProductController::class, 'destroy']);
+
 Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('product/{id}', [ProductController::class, 'show']);
-  Route::put('product/{id}/update', [ProductController::class, 'update']);
-  Route::delete('product/{id}/delete', [ProductController::class, 'destroy']);
 });
