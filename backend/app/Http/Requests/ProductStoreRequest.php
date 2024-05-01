@@ -25,11 +25,12 @@ class ProductStoreRequest extends FormRequest
         $rules = [
             'name' => 'required|string|max:200',
             'price' => 'required|string',
+            'img' => 'required',
         ];
 
-        if ($this->isMethod('post')) {
-            $rules['img'] = 'required|image|mimes:jpg,jpeg,png,gif,svg|max:2048';
-        }
+        // if ($this->isMethod('post')) {
+        //     $rules['img'] = 'required|image|mimes:jpg,jpeg,png,gif,svg|max:2048';
+        // }
 
         return $rules;
     }

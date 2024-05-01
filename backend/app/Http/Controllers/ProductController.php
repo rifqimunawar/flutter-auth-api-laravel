@@ -11,25 +11,31 @@ class ProductController extends Controller
 
   public function index()
   {
-    $products = Product::all();
-
-    return response()->json([
-      "products" => $products
-    ], 200);
+      $products = Product::all()->map(function ($product) {
+          // $product->img = 'http://127.0.0.1:8000/img/' . $product->img;
+          $product->img = 'http://10.0.2.2:8000/img/' . $product->img;
+          return $product;
+      });
+  
+      return response()->json([
+          "products" => $products
+      ], 200);
   }
+  
 
   public function store(ProductStoreRequest $request)
   {
     try {
       $name = $request->name;
       $price = $request->price;
-      $img = $request->file('img');
-      $newFileName = 'product' . now()->timestamp . '.' . $img->getClientOriginalExtension();
-      $img->move(public_path('img/'), $newFileName);
+      $img = $request->img;
+      // $img = $request->file('img');
+      // $newFileName = 'product' . now()->timestamp . '.' . $img->getClientOriginalExtension();
+      // $img->move(public_path('img/'), $newFileName);
 
       Product::create([
         'name' => $name,
-        'img' => $newFileName,
+        'img' => $img,
         'price' => $price,
       ]);
 
@@ -46,6 +52,7 @@ class ProductController extends Controller
   public function show($id)
   {
     $product = Product::find($id);
+    $product->img = 'http://10.0.2.2:8000/img/' . $product->img;
 
     if (!$product) {
       return response()->json([

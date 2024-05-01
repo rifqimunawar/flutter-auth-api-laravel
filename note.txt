@@ -1,0 +1,2 @@
+sementata input data img berbentuk text,
+lakukan pengecekan di backend bgaina controller dan product store request
