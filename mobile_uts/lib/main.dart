@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Rifqi Store',
+      title: 'Rifqi Munawar R.',
       home: Splash(),
     );
   }

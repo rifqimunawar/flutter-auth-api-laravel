@@ -16,7 +16,7 @@ class Login extends StatelessWidget {
       'email': _emailController.text,
       'password': _passwordController.text,
     });
-    print(response.body); // Untuk debugging
+    print(response.body);
     return response;
   }
 
@@ -67,8 +67,7 @@ class Login extends StatelessWidget {
                       if (response.statusCode == 200) {
                         var responseData = json.decode(response.body);
                         if (responseData['status'] == 'success') {
-                          var dataName = responseData['data']
-                              ['name']; // Mendapatkan nama pengguna
+                          var dataName = responseData['data']['name'];
                           Navigator.push(
                             context,
                             MaterialPageRoute(
