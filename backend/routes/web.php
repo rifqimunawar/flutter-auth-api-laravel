@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,8 @@ Route::get('/', function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::middleware(['auth:sanctum'])->group(function () {
+  Route::get('product/{id}', [ProductController::class, 'show']);
+});

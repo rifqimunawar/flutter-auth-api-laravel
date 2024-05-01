@@ -38,13 +38,19 @@ class UserAuthController extends Controller
     $user = User::where('email',$loginUserData['email'])->first();
     if(!$user || !Hash::check($loginUserData['password'],$user->password)){
         return response()->json([
-            'message' => 'Invalid Credentials'
+            'message' => 'Email atau password salah'
         ],401);
     }
     $token = $user->createToken($user->name.'-AuthToken')->plainTextToken;
     return response()->json([
-        'access_token' => $token,
-    ]);
+      'status' => 'success',
+      'data' => [
+          'access_token' => $token,
+          'name' => $user->name,
+      ],
+      'message' => 'Login successful'
+    ], 200);
+  
   }
 
     public function logout(){
@@ -53,5 +59,14 @@ class UserAuthController extends Controller
       return response()->json([
         "message"=>"logged out"
       ]);
+    }
+
+
+    public function index(){
+      $users = User::all();
+
+      return response()->json([
+          "users" => $users
+      ], 200);
     }
 }

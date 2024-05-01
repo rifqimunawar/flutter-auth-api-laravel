@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_uts/screens/homepage.dart';
+import 'package:mobile_uts/screens/login.dart';
+import 'package:mobile_uts/screens/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,14 +9,14 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({
-    super.key,
+    Key? key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Rifqi Store',
-      home: HomePage(),
+      home: Splash(),
     );
   }
 }
