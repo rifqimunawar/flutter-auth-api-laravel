@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Rifqi Store',
+          'Home',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.blue,
