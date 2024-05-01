@@ -1,16 +1,17 @@
-# mobile_uts
+Splash Screen
+![2](https://github.com/rifqimunawar/flutter-auth-api-laravel/assets/102643244/fd6acf8f-582f-4ab5-9e00-93e438ac9573)
 
-A new Flutter project.
+login register
+![3](https://github.com/rifqimunawar/flutter-auth-api-laravel/assets/102643244/31260ef0-faff-4d8d-a695-0dfcf20c1a86)
 
-## Getting Started
+Halaman Home
+![4](https://github.com/rifqimunawar/flutter-auth-api-laravel/assets/102643244/8ee5397d-5791-4bdb-9da3-4775ee99f3c7)
 
-This project is a starting point for a Flutter application.
+List Product/List User
+![5](https://github.com/rifqimunawar/flutter-auth-api-laravel/assets/102643244/ed9c0444-45af-4778-9a82-c2bead645275)
 
-A few resources to get you started if this is your first Flutter project:
+New Product
+![6](https://github.com/rifqimunawar/flutter-auth-api-laravel/assets/102643244/12b6265d-6e40-49eb-8ee3-3d8295fc4167)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Edit Product
+![7](https://github.com/rifqimunawar/flutter-auth-api-laravel/assets/102643244/a7e009b1-311c-4e0a-8c8a-bd12840e81d9)

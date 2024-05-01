@@ -11,11 +11,7 @@ class ProductController extends Controller
 
   public function index()
   {
-      $products = Product::all()->map(function ($product) {
-          // $product->img = 'http://127.0.0.1:8000/img/' . $product->img;
-          $product->img = 'http://10.0.2.2:8000/img/' . $product->img;
-          return $product;
-      });
+    $products = Product::all();
   
       return response()->json([
           "products" => $products
@@ -52,7 +48,6 @@ class ProductController extends Controller
   public function show($id)
   {
     $product = Product::find($id);
-    $product->img = 'http://10.0.2.2:8000/img/' . $product->img;
 
     if (!$product) {
       return response()->json([
